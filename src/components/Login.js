@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { signUp } from "../actions/signup";
+import { login } from "../actions/login";
 
-class SignUp extends Component {
+class LoginPage extends React.Component {
   state = {
     email: "",
     password: ""
@@ -10,10 +10,16 @@ class SignUp extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const action = signUp(this.state.email, this.state.password);
+    console.log("this.props", this.props);
+
+    const action = login(
+      this.state.email,
+      this.state.password,
+      this.props.history.push
+    );
     this.props.dispatch(action);
-    this.setState({ email: "", password: "" });
-    this.props.history.push(`/login`);
+    // this.setState({ email: "", password: "" });
+    //this.props.history.push(`/`);
   };
 
   handleChange = event => {
@@ -25,7 +31,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <h1>Sign Up</h1>
+        <h1>Login</h1>
         <form onSubmit={this.handleSubmit}>
           <p>
             <input
@@ -46,7 +52,7 @@ class SignUp extends Component {
             />
           </p>
           <p>
-            <button type="submit">Sign Up</button>
+            <button type="submit">Login</button>
           </p>
         </form>
       </div>
@@ -54,4 +60,4 @@ class SignUp extends Component {
   }
 }
 
-export default connect()(SignUp);
+export default connect()(LoginPage);

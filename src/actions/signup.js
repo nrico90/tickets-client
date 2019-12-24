@@ -1,4 +1,4 @@
-import api from "../../api";
+import api from "../api";
 
 export function signUp(email, password) {
   return function thunk(dispatch, getState) {
