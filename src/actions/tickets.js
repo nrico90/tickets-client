@@ -28,7 +28,7 @@ export const getTicket = id => dispatch => {
   request(`${baseUrl}/events/${id}/ticket`)
     .then(response => {
       console.log("response.body", response.body);
-      const ticket = response.body.ticket;
+      const ticket = response.body;
 
       dispatch(ticketFetched(ticket));
     })

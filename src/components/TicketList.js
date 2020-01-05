@@ -1,11 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function TicketList(props) {
   const { tickets } = props;
+  //console.log(props.tickets);
+
   return (
     <div>
       <h2>Tickets List</h2>
-      <ul>
+      <div>
         {!tickets
           ? "Loading..."
           : tickets.map(ticket => {
@@ -15,10 +18,11 @@ export default function TicketList(props) {
                   <img src={ticket.picture} />
                   <p>Price: {ticket.price}</p>
                   <p>Description: {ticket.description}</p>
+                  <Link to={`ticket/${ticket.id}`}>go to ticket</Link>
                 </div>
               );
             })}
-      </ul>
+      </div>
     </div>
   );
 }
