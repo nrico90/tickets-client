@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { signUp } from "../actions/signup";
+import { signup } from "../actions/auth";
 
 class SignUp extends Component {
   state = {
@@ -10,10 +10,9 @@ class SignUp extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const action = signUp(this.state.email, this.state.password);
+    const action = signup(this.state.email, this.state.password);
     this.props.dispatch(action);
     this.setState({ email: "", password: "" });
-    this.props.history.push(`/login`);
   };
 
   handleChange = event => {

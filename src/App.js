@@ -1,22 +1,20 @@
-import React from "react";
-import { connect } from "react-redux";
-import "./App.css";
-import { Route } from "react-router-dom";
+import React, { Component } from "react";
 import Home from "./components/Home";
+import LoginFormContainer from "./components/LoginFormContainer";
 import SignUp from "./components/SignUp";
-import Login from "./components/Login";
+import EventListContainer from "./components/EventListContainer";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>TICKETSWAP CLONE</h1>
+class App extends Component {
+  render() {
+    return (
       <div>
-        <Route path="/" exact component={Home} />
-        <Route path="/signUp" exact component={SignUp} />
-        <Route path="/login" exact component={Login} />
+        <Home />
+        <LoginFormContainer />
+        <SignUp />
+        <EventListContainer />
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-export default connect()(App);
+export default App;
