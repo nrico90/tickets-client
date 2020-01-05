@@ -12,6 +12,8 @@ class Toolbar extends Component {
         <Link to="/login">Login</Link>
         <br />
         <Link to="/createEvent">Create Event </Link>
+        <br />
+        <Link to="/tickets">tickets</Link>
       </div>
     );
   }

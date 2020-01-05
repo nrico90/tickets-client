@@ -12,7 +12,7 @@ class EventListContainer extends React.Component {
     console.log(this.props);
     return (
       <div>
-        <h1>Welcome to my Events Page</h1>
+        <h1>Welcome to Ticketswap-Clone</h1>
         <EventList events={this.props.events} />
       </div>
     );
