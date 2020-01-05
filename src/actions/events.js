@@ -61,48 +61,20 @@ const eventsFetched = events => ({
   events
 });
 
-const eventFetched = event => ({
-  type: EVENT_FETCHED,
-  event
-});
-
-const eventUpdateSuccess = event => ({
-  type: EVENT_UPDATE_SUCCESS,
-  event
-});
-
-const eventDeleteSuccess = eventId => ({
-  type: EVENT_DELETE_SUCCESS,
-  eventId
-});
-
-const eventCreateSuccess = event => ({
-  type: EVENT_CREATE_SUCCESS,
-  event
-});
-
-export const createEvent = data => dispatch => {
-  request
-    .post(`${baseUrl}/events`)
-    .set("Authorization", "Bearer " + localStorage.getItem("token"))
-    .send(data)
-    .then(response => {
-      console.log("response?event", response.body);
-      dispatch(eventCreateSuccess(response.body));
-    })
-    .catch(console.error);
-};
-
 export const loadEvents = () => (dispatch, getState) => {
   if (getState().events) return;
 
   request(`${baseUrl}/events`)
     .then(response => {
       dispatch(eventsFetched(response.body));
-      console.log("eventsFetched", response.body);
     })
     .catch(console.error);
 };
+
+const eventFetched = event => ({
+  type: EVENT_FETCHED,
+  event
+});
 
 export const loadEvent = id => (dispatch, getState) => {
   const state = getState().event;
@@ -111,10 +83,47 @@ export const loadEvent = id => (dispatch, getState) => {
   request(`${baseUrl}/events/${id}`)
     .then(response => {
       dispatch(eventFetched(response.body));
-      console.log("tickets", response.body);
     })
     .catch(console.error);
 };
+
+const eventCreateSuccess = event => ({
+  type: EVENT_CREATE_SUCCESS,
+  payload: event
+});
+
+export const createEvent = data => (dispatch, getState) => {
+  //const state = getState();
+  // const { user } = state;
+  //const jwt = state.user.jwt;
+  const token = getState().auth;
+  //console.log(data);
+  //console.log("token", jwt);
+
+  // request
+  //   .post(`${baseUrl}/events`)
+  //   .set("Authorization", `Bearer ${token}`)
+  //   // .set("Authorization", "Bearer " + localStorage.getItem("token"))
+  //   .send(data)
+  //   .then(response => {
+  //     dispatch(eventCreateSuccess(response.body));
+  //   })
+  //   .catch(console.error);
+
+  request
+    .post(`${baseUrl}/events`)
+    .send(data)
+    .set("Authorization", `Bearer ${token}`)
+    .then(response => {
+      dispatch(eventCreateSuccess(response.body));
+    })
+    .catch(console.error);
+};
+
+const eventUpdateSuccess = event => ({
+  type: EVENT_UPDATE_SUCCESS,
+  payload: event
+});
 
 export const updateEvent = (id, data) => dispatch => {
   request
@@ -125,6 +134,11 @@ export const updateEvent = (id, data) => dispatch => {
     })
     .catch(console.error);
 };
+
+const eventDeleteSuccess = eventId => ({
+  type: EVENT_DELETE_SUCCESS,
+  payload: eventId
+});
 
 export const deleteEvent = id => dispatch => {
   request
