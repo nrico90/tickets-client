@@ -1,54 +1,6 @@
 import request from "superagent";
 
-// export const ALL_EVENTS = "ALL_EVENTS";
-
 const baseUrl = "http://localhost:4000";
-
-// function allEvents(payload) {
-//   return {
-//     type: ALL_EVENTS,
-//     payload
-//   };
-// }
-
-// export const getEvents = offset => (dispatch, getState) => {
-//   const state = getState();
-//   const { events } = state;
-
-//   request(`${baseUrl}/events`)
-//     .query({ offset })
-//     .then(response => {
-//       const action = allEvents(response.body);
-
-//       dispatch(action);
-//     })
-//     .catch(console.error);
-// };
-
-// export const NEW_EVENT = "NEW_EVENT";
-
-// function newEvent(payload) {
-//   return {
-//     type: NEW_EVENT,
-//     payload
-//   };
-// }
-
-// export const createEvent = data => (dispatch, getState) => {
-//   const state = getState();
-//   const { user } = state;
-
-//   request
-//     .post(`${baseUrl}/events`)
-//     .send(data)
-//     .set("Authorization", `Bearer ${user.jwt}`)
-//     .then(response => {
-//       const action = newEvent(response.body);
-
-//       dispatch(action);
-//     })
-//     .catch(console.error);
-// };
 
 export const EVENTS_FETCHED = "EVENTS_FETCHED";
 export const EVENT_FETCHED = "EVENT_FETCHED";

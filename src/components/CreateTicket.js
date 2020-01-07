@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createEvent } from "../actions/events";
+import { createTicket } from "../actions/tickets";
 
-class CreateEvent extends Component {
+class CreateTicket extends Component {
   state = {
-    name: "",
+    author: "",
     description: "",
     picture: "",
-    start: "",
-    end: ""
+    price: 0
   };
 
   handleChange = event => {
@@ -18,36 +17,29 @@ class CreateEvent extends Component {
   handleSubmit = event => {
     console.table(this.state);
     event.preventDefault();
-    // const { name, description, picture, start, end } = this.state;
-    // const action = createEvent(name, description, picture, start, end);
-    // this.props.dispatch(action);
-    this.props.createEvent(this.state);
+    this.props.createTicket(this.state);
     this.setState({
-      name: "",
+      author: "",
       description: "",
       picture: "",
-      start: "",
-      end: ""
+      price: 0
     });
   };
 
   render() {
-    // if (this.props.jwt === null) {
-    //   return <Link to="/signup">Please sign up to share your rants</Link>;
-    // }
-
     console.log(this.state);
     return (
       <div>
-        <h2>Create your own Event</h2>
+        <h1>Create your own Ticket</h1>
         <form onSubmit={this.handleSubmit}>
           <input
-            name="name"
+            name="author"
             type="text"
             value={this.state.name}
             onChange={this.handleChange}
-            placeholder="name"
+            placeholder="author"
           />
+          <br />
           <br />
 
           <textarea
@@ -57,6 +49,8 @@ class CreateEvent extends Component {
             placeholder="description"
           />
           <br />
+          <br />
+
           <input
             name="picture"
             type="text"
@@ -65,32 +59,17 @@ class CreateEvent extends Component {
             placeholder="pictureUrl"
           />
           <br />
+          <br />
           <input
-            name="start"
+            name="price"
             type="text"
             value={this.state.start}
             onChange={this.handleChange}
-            placeholder="start event"
-          />
-          <br />
-          <input
-            name="end"
-            type="text"
-            value={this.state.end}
-            onChange={this.handleChange}
-            placeholder="end event"
+            placeholder="price"
           />
           <br />
           <input type="submit" />
         </form>
-        <p>
-          You need to have an acount to create an event{" "}
-          <a href="/signup">sign up </a>, or log in <a href="/login">Log in </a>
-        </p>
-
-        <p>
-          Go to the list of events <a href="/"> All Events </a>
-        </p>
       </div>
     );
   }
@@ -103,7 +82,7 @@ const mapStateToProps = reduxState => {
 };
 
 const mapDispatchToProps = {
-  createEvent
+  createTicket
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateEvent);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateTicket);

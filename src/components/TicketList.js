@@ -8,17 +8,20 @@ export default function TicketList(props) {
   return (
     <div>
       <h2>Tickets List</h2>
+      <h3>Here you can see a list of tickets.</h3>
       <div>
         {!tickets
           ? "Loading..."
           : tickets.map(ticket => {
               return (
                 <div key={ticket.id}>
-                  <p>Author: {ticket.author}</p>
-                  <img src={ticket.picture} />
-                  <p>Price: {ticket.price}</p>
-                  <p>Description: {ticket.description}</p>
-                  <Link to={`ticket/${ticket.id}`}>go to ticket</Link>
+                  <Link to={`ticket/${ticket.id}`}>
+                    <p>Author: {ticket.author}</p>
+                    <img src={ticket.picture} />
+                    <p>Price: {ticket.price} Euros</p>
+                    <p>Description: {ticket.description}</p>
+                    <p>Ticket Risk= 5%</p>
+                  </Link>
                 </div>
               );
             })}

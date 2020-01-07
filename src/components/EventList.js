@@ -11,8 +11,10 @@ export default function EventList(props) {
           <div key={event.id}>
             <Link to={`/events/${event.id}/ticket`}>
               <h1>{event.name}</h1>
-              description={event.description}
+              <p>{event.description}</p>
               <img src={event.picture} />
+              <p>{event.start} </p>
+              <p>{event.end}</p>
             </Link>
           </div>
         );

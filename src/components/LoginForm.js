@@ -60,7 +60,7 @@ class LoginPage extends React.Component {
 }
 function mapStateToProps(state) {
   return {
-    loggedin: Boolean(state.auth.jwt)
+    loggedin: Boolean(state.auth)
   };
 }
 export default connect(mapStateToProps)(LoginPage);

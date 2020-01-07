@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { getTickets } from "../actions/tickets";
 import { connect } from "react-redux";
 import TicketList from "./TicketList";
 
-class TicketListContainer extends React.Component {
+class TicketListContainer extends Component {
   componentDidMount() {
     const { eventId } = this.props.match.params;
     this.props.getTickets(eventId);

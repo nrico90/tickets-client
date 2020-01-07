@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import { loadEvents } from "../actions/events";
 import { connect } from "react-redux";
 import EventList from "./EventList.js";
+import { Link } from "react-router-dom";
 
-class EventListContainer extends React.Component {
+class EventListContainer extends Component {
   componentDidMount() {
     this.props.loadEvents();
   }
@@ -13,7 +14,11 @@ class EventListContainer extends React.Component {
     return (
       <div>
         <h1>Welcome to Ticketswap-Clone</h1>
-        <EventList events={this.props.events} />
+        <h3>Here you can see a list of Events</h3>
+        <Link to={`/ticket/:id`}>
+          <EventList events={this.props.events} />
+        </Link>
+        ____________________________________
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getTicket } from "../actions/tickets";
-// import TicketList from "../components/TicketList"
+
+import CreateTicket from "./CreateTicket";
 
 class EventDetail extends Component {
   componentDidMount() {
@@ -12,6 +13,8 @@ class EventDetail extends Component {
   render() {
     return (
       <div>
+        <h1>Create Tickets</h1>
+        <CreateTicket />
         <h1>EventTickets</h1>
 
         {!this.props.tickets && <p>We don't have tickets</p>}
@@ -21,10 +24,10 @@ class EventDetail extends Component {
           ? this.props.tickets.map(ticket => {
               return (
                 <div key={ticket.id}>
-                  author={ticket.author}
-                  description={ticket.description}
-                  price={ticket.price}
-                  picture={ticket.picture}
+                  <h3>{ticket.author}</h3>
+                  <p>{ticket.description}</p>
+                  <p>{ticket.price} Euros</p>
+                  <img src={ticket.picture} />
                 </div>
               );
             })
@@ -36,8 +39,7 @@ class EventDetail extends Component {
 
 function mapStateToProps(reduxState) {
   return {
-    tickets: reduxState.ticket,
-    events: reduxState.events
+    tickets: reduxState.ticket
   };
 }
 

@@ -48,6 +48,11 @@ class SignUp extends Component {
             <button type="submit">Sign Up</button>
           </p>
         </form>
+        <p>
+          Now, you can create an event{" "}
+          <a href="/CreateEvent">Create an event </a> or a ticket{" "}
+          <a href="/CreateTicket">Create a Ticket </a>
+        </p>
       </div>
     );
   }

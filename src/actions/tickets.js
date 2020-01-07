@@ -27,7 +27,7 @@ const ticketFetched = ticket => ({
 export const getTicket = id => dispatch => {
   request(`${baseUrl}/events/${id}/ticket`)
     .then(response => {
-      console.log("response.body", response.body);
+      console.log("response.body", response);
       const ticket = response.body;
 
       dispatch(ticketFetched(ticket));
@@ -42,7 +42,7 @@ const ticketCreateSuccess = ticket => ({
 });
 
 export const createTicket = data => dispatch => {
-  console.log("data", data);
+  console.log("dame algo", data);
   request
     .post(`${baseUrl}/tickets`)
     .send(data)
@@ -51,3 +51,13 @@ export const createTicket = data => dispatch => {
       dispatch(ticketCreateSuccess(response.body));
     });
 };
+
+// export const createTicket = (eventId, ticket) => dispatch => {
+//   console.log("dame algo", eventId, ticket);
+//   request
+//     .post(`${baseUrl}/events/${eventId}`)
+//     .send(ticket)
+//     .then(response => {
+//       dispatch(ticketCreateSuccess(response.body));
+//     });
+// };
