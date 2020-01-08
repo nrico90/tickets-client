@@ -41,15 +41,19 @@ const ticketCreateSuccess = ticket => ({
   payload: ticket
 });
 
-export const createTicket = data => dispatch => {
+export const createTicket = data => (dispatch, getState) => {
+  const token = getState().auth;
   console.log("dame algo", data);
+
   request
-    .post(`${baseUrl}/tickets`)
+    .post(`${baseUrl}/events/:id`)
+    .set("Authorization", `Bearer ${token}`)
     .send(data)
     .then(response => {
       console.log("response.body", response.body);
       dispatch(ticketCreateSuccess(response.body));
-    });
+    })
+    .catch(console.error);
 };
 
 // export const createTicket = (eventId, ticket) => dispatch => {
