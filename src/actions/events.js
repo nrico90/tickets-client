@@ -64,8 +64,9 @@ export const createEvent = data => (dispatch, getState) => {
 
   request
     .post(`${baseUrl}/events`)
-    .send(data)
     .set("Authorization", `Bearer ${token}`)
+    .send(data)
+
     .then(response => {
       dispatch(eventCreateSuccess(response.body));
     })

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import EventListContainer from "./components/EventListContainer";
@@ -29,4 +30,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    loggedIn: state.auth !== null
+  };
+};
+
+export default connect(mapStateToProps)(App);

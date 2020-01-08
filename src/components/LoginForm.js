@@ -10,9 +10,10 @@ class LoginPage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const action = login(this.state.email, this.state.password);
+    this.props.login(this.state.email, this.state.password);
+    //const action = login(this.state.email, this.state.password);
     // const actionId = this.props
-    this.props.dispatch(action);
+    //this.props.dispatch(action);
     // this.props.dispatch(actionId);
     this.setState({ email: "", password: "" });
   };
@@ -60,7 +61,7 @@ class LoginPage extends React.Component {
 }
 function mapStateToProps(state) {
   return {
-    loggedin: Boolean(state.auth)
+    token: state.auth
   };
 }
-export default connect(mapStateToProps)(LoginPage);
+export default connect(mapStateToProps, { login })(LoginPage);
