@@ -1,24 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function TicketDetail(props) {
-  if (!props.tickets) return "Loading";
+  if (!props.ticket) return "WTFFF";
+  console.log("HELL", props.ticket);
+  //const { eventName } = props;
+  //const { eventName, ticket } = props;
 
   return (
     <div>
-      {props.tickets.map(ticket => {
-        return (
-          <div key={ticket.id}>
-            <Link to={`/ticket/:id`}>
-              <h1>{ticket.author}</h1>
-              <p>{ticket.description}</p>
-              <img src={ticket.picture} />
-              <p>{ticket.price} Euros</p>
-              <p>Risk = 5%</p>
-            </Link>
-          </div>
-        );
-      })}
+      <div>
+        <h1></h1>
+        <ul>
+          👌
+          <br />
+          <li>Ticket for event {props.ticket.eventId}</li>
+          <li>Author: {props.ticket.author}</li>
+          <li>
+            <img src={props.ticket.picture} alt="img" />{" "}
+          </li>
+          <li>Price: {props.ticket.price} euros</li>
+          <li>Description: {props.ticket.description}</li>
+          <li>Fraud Risk: {props.ticket.risk}%</li>
+        </ul>
+      </div>
+      <button onClick={props.onDelete}>Delete</button>
+      <button onClick={props.onEdit}>Edit</button>
     </div>
   );
 }

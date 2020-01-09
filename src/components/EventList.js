@@ -9,13 +9,15 @@ export default function EventList(props) {
       {props.events.map(event => {
         return (
           <div key={event.id}>
-            <Link to={`/events/${event.id}/ticket`}>
+            <Link to={`/events/${event.id}/`}>
               <h1>{event.name}</h1>
+              <img src={event.picture} alt="img" />
               <p>{event.description}</p>
-              <img src={event.picture} />
-              <p>{event.start} </p>
-              <p>{event.end}</p>
             </Link>
+            <p>
+              Start:{event.start} /// End:{event.end}{" "}
+            </p>
+            <p></p>
           </div>
         );
       })}

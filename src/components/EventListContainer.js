@@ -16,7 +16,7 @@ class EventListContainer extends Component {
       <div>
         <h1>Welcome to Ticketswap-Clone</h1>
         <h3>Here you can see a list of Events</h3>
-        <Link to={`/ticket/:id`}>
+        <Link to={`/events/:id`}>
           <EventList events={this.props.events} />
         </Link>
         {this.props.loggedIn ? (

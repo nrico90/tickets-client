@@ -48,3 +48,8 @@ img {
 h1 {
   color: #61dafb;
 }
+
+ul {
+  text-decoration: none;
+  list-style: none;
+}

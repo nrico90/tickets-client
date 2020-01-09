@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 class Toolbar extends Component {
   render() {
@@ -22,4 +23,10 @@ class Toolbar extends Component {
   }
 }
 
-export default Toolbar;
+const mapStateToProps = function(state) {
+  return {
+    user: state.user
+  };
+};
+
+export default connect(mapStateToProps)(Toolbar);

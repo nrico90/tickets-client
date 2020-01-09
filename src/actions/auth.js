@@ -1,8 +1,9 @@
 import request from "superagent";
-const baseUrl = "http://localhost:4000";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const USER_LOGOUT = "USER_LOGOUT";
+
+const baseUrl = "http://localhost:4000";
 
 export const logout = () => ({
   type: USER_LOGOUT

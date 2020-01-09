@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createEvent } from "../actions/events";
+import { Link } from "react-router-dom";
 
 class CreateEvent extends Component {
   state = {
@@ -32,9 +33,9 @@ class CreateEvent extends Component {
   };
 
   render() {
-    // if (this.props.jwt === null) {
-    //   return <Link to="/signup">Please sign up to share your rants</Link>;
-    // }
+    if (this.props.jwt === null) {
+      return <Link to="/signup">Please sign up to share your rants</Link>;
+    }
 
     console.log(this.state);
     return (

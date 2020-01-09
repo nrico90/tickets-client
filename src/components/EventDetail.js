@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getTicket } from "../actions/tickets";
+import { getTicket, getTickets } from "../actions/tickets";
+import { Link } from "react-router-dom";
 
 import CreateTicket from "./CreateTicket";
 
@@ -13,25 +14,29 @@ class EventDetail extends Component {
   render() {
     return (
       <div>
-        <h1>Create Tickets</h1>
-        <CreateTicket />
-        <h1>EventTickets</h1>
+        <h1>Tickets of the event</h1>
+        <p>Info</p>
 
-        {!this.props.tickets && <p>We don't have tickets</p>}
-        {this.props.tickets && <p>We have tickets</p>}
+        {/* {!this.props.tickets && <p>We do not have tickets</p>}
+        {this.props.tickets && <p>We have tickets</p>} */}
 
         {this.props.tickets
           ? this.props.tickets.map(ticket => {
               return (
-                <div key={ticket.id}>
-                  <h3>{ticket.author}</h3>
-                  <p>{ticket.description}</p>
-                  <p>{ticket.price} Euros</p>
-                  <img src={ticket.picture} />
-                </div>
+                <Link to={`/ticket/${ticket.id}/`}>
+                  <div key={ticket.id}>
+                    <h3>{ticket.author}</h3>
+                    <p>{ticket.description}</p>
+                    <p>{ticket.price} Euros</p>
+                    <img src={ticket.picture} alt="img" />
+                  </div>
+                </Link>
               );
             })
           : "Loading..."}
+        <div>
+          <CreateTicket />
+        </div>
       </div>
     );
   }

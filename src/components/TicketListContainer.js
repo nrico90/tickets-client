@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getTickets } from "../actions/tickets";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import TicketList from "./TicketList";
 
 class TicketListContainer extends Component {
@@ -12,7 +13,9 @@ class TicketListContainer extends Component {
   render() {
     return (
       <div>
-        <TicketList tickets={this.props.tickets} />
+        <Link to={`/ticket/:id/`}>
+          <TicketList tickets={this.props.tickets} />
+        </Link>
       </div>
     );
   }

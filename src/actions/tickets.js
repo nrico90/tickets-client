@@ -25,11 +25,10 @@ const ticketFetched = ticket => ({
 });
 
 export const getTicket = id => dispatch => {
-  request(`${baseUrl}/events/${id}/ticket`)
+  request(`${baseUrl}/tickets/${id}`)
     .then(response => {
       console.log("response.body", response);
       const ticket = response.body;
-
       dispatch(ticketFetched(ticket));
     })
     .catch(console.error);
@@ -41,12 +40,12 @@ const ticketCreateSuccess = ticket => ({
   payload: ticket
 });
 
-export const createTicket = data => (dispatch, getState) => {
+export const createTicket = (data, id) => (dispatch, getState) => {
   const token = getState().auth;
   console.log("dame algo", data);
 
   request
-    .post(`${baseUrl}/events/:id`)
+    .post(`${baseUrl}/events/${id}`)
     .set("Authorization", `Bearer ${token}`)
     .send(data)
     .then(response => {
@@ -56,12 +55,16 @@ export const createTicket = data => (dispatch, getState) => {
     .catch(console.error);
 };
 
-// export const createTicket = (eventId, ticket) => dispatch => {
-//   console.log("dame algo", eventId, ticket);
-//   request
-//     .post(`${baseUrl}/events/${eventId}`)
-//     .send(ticket)
-//     .then(response => {
-//       dispatch(ticketCreateSuccess(response.body));
-//     });
-// };
+export const TICKET_DETAIL = "TICKET_DETAIL";
+const ticketDetailSuccess = ticket => ({
+  type: TICKET_DETAIL,
+  payload: ticket
+});
+
+export const loadTicket = id => dispatch => {
+  request(`${baseUrl}/ticket/${id}`)
+    .then(res => {
+      dispatch(ticketFetched(res.body));
+    })
+    .catch(console.error);
+};

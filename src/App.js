@@ -10,6 +10,7 @@ import CreateEvent from "./components/CreateEvent";
 import TicketListContainer from "./components/TicketListContainer";
 import EventDetail from "./components/EventDetail";
 import CreateTicket from "./components/CreateTicket";
+import TicketDetailContainer from "./components/TicketDetailContainer";
 
 class App extends Component {
   render() {
@@ -23,7 +24,8 @@ class App extends Component {
           <Route path="/createEvent" component={CreateEvent} />
           <Route path="/createTicket" component={CreateTicket} />
           <Route path="/tickets" component={TicketListContainer} />
-          <Route path="/events/:id/ticket/" component={EventDetail} />
+          <Route path="/events/:id/" component={EventDetail} />
+          <Route path="/ticket/:id/" component={TicketDetailContainer} />
         </Switch>
       </div>
     );

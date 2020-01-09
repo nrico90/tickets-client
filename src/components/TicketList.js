@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import TicketDetailContainer from "./TicketDetailContainer";
+import TicketDetail from "./TicketDetail";
 
 export default function TicketList(props) {
   const { tickets } = props;
@@ -15,9 +17,11 @@ export default function TicketList(props) {
           : tickets.map(ticket => {
               return (
                 <div key={ticket.id}>
-                  <Link to={`ticket/${ticket.id}`}>
+                  <Link to={`/ticket/${ticket.id}/`}>
+                    {/* <TicketDetail />
+                    <TicketDetailContainer /> */}
                     <p>Author: {ticket.author}</p>
-                    <img src={ticket.picture} />
+                    <img src={ticket.picture} alt="img" />
                     <p>Price: {ticket.price} Euros</p>
                     <p>Description: {ticket.description}</p>
                     <p>Ticket Risk= 5%</p>

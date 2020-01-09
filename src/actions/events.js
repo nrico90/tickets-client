@@ -45,28 +45,12 @@ const eventCreateSuccess = event => ({
 });
 
 export const createEvent = data => (dispatch, getState) => {
-  //const state = getState();
-  // const { user } = state;
-  //const jwt = state.user.jwt;
   const token = getState().auth;
-  //console.log(data);
-  //console.log("token", jwt);
-
-  // request
-  //   .post(`${baseUrl}/events`)
-  //   .set("Authorization", `Bearer ${token}`)
-  //   // .set("Authorization", "Bearer " + localStorage.getItem("token"))
-  //   .send(data)
-  //   .then(response => {
-  //     dispatch(eventCreateSuccess(response.body));
-  //   })
-  //   .catch(console.error);
 
   request
     .post(`${baseUrl}/events`)
     .set("Authorization", `Bearer ${token}`)
     .send(data)
-
     .then(response => {
       dispatch(eventCreateSuccess(response.body));
     })
